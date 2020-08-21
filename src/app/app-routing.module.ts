@@ -9,22 +9,33 @@ import { RegisterComponent } from './auth/register/register.component';
 
 const routes: Routes = [{
   path: 'home',
-  component: HomeComponent
+  component: HomeComponent,
+  data: { animation: { value: 'home' } }
 },
 {
   path: 'about',
   component: AboutComponent,
-  canActivate: [AuthGuard]
+  canActivate: [AuthGuard],
+  data: { animation: { value: 'about' } }
 
 },
 {
   path: 'farm',
   component: FarmComponent,
-  canActivate: [AuthGuard]
+  canActivate: [AuthGuard],
+  data: { animation: { value: 'farm' } }
 
 },
-{ path: 'login', component: LoginComponent },
-{ path: 'register', component: RegisterComponent },
+{
+  path: 'login',
+  component: LoginComponent,
+  data: { animation: { value: 'login' } }
+},
+{
+  path: 'register',
+  component: RegisterComponent,
+  data: { animation: { value: 'pageA' } }
+},
 {
   path: '',
   redirectTo: '/home',

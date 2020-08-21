@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: "https://dev.bilinguar.systems",
+  clientSecret: "9pDpXawxXGvP78AbiBx9hkjORB5L4f4GAlO9SklK",
+  clientId: 1
 };
 
 /*

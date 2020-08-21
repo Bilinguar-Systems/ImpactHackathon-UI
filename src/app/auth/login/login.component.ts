@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -5,50 +6,64 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
-@Component({ templateUrl: './login.component.html' })
+@Component({
+  selector: 'login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  loading = false;
-  submitted = false;
-  returnUrl: string;
+  form: FormGroup;
+  public loginInvalid: boolean;
+  private formSubmitAttempt: boolean;
+  private returnUrl: string;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService) {
-    if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
-    }
+    private authService: AuthenticationService
+  ) {
   }
 
-  ngOnInit() {
-    console.log('test')
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+  async ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/home';
+
+    this.form = this.fb.group({
+      username: ['', Validators.email],
       password: ['', Validators.required]
     });
 
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    if (await this.authService.currentUserValue) {
+      await this.router.navigate([this.returnUrl]);
+    }
   }
 
-  get form() { return this.loginForm.controls; }
-
-  onSubmit() {
-    this.submitted = true;
-    if (this.loginForm.invalid) {
-      return;
+  async onSubmit() {
+    this.loginInvalid = false;
+    this.formSubmitAttempt = false;
+    console.log('tets')
+    if (this.form.valid) {
+      try {
+        const username = this.form.get('username').value;
+        const password = this.form.get('password').value;
+        let user = this.authService.login(username, password).pipe(first())
+          .subscribe(
+            data => {
+              console.log(data)
+              this.router.navigate([this.returnUrl]);
+            },
+            error => {
+              alert('login failed')
+            });
+      } catch (err) {
+        this.loginInvalid = true;
+      }
+    } else {
+      this.formSubmitAttempt = true;
     }
+  }
 
-    this.loading = true;
-    // this.authenticationService.login(this.form.username.value, this.form.password.value)
-    //   .pipe(first())
-    //   .subscribe(
-    //     data => {
-    //       this.router.navigate([this.returnUrl]);
-    //     },
-    //     error => {
-    //       this.loading = false;
-    //     });
+  register() {
+    this.router.navigate(['register'])
   }
 }
