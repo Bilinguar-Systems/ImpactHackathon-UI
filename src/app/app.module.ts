@@ -57,6 +57,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FarmProductsComponent } from './farm-products/farm-products.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { FarmProductsComponent } from './farm-products/farm-products.component';
     ContactUsComponent,
     JoinNowComponent,
     FarmComponent,
-    FarmProductsComponent
+    FarmProductsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

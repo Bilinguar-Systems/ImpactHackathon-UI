@@ -1,6 +1,6 @@
 <div style="margin-left: 300px; margin-right: 300px;">
-    <h3>Farms</h3>
-    <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
+    <h3>Project</h3>
+    <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid" *ngIf="data">
         <div [fxFlex]="(100/4) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor='let farm of data.data'>
             <mat-card class=" farm-card">
                 <mat-card-header>

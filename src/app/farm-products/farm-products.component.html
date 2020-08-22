@@ -1,1 +1,26 @@
-<p>farm-products works!</p>
+<div style="margin-left: 300px; margin-right: 300px;">
+    <h3>Products</h3>
+    <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid" *ngIf="data">
+        <div [fxFlex]="(100/4) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor='let farm of data.data'>
+            <mat-card class=" farm-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{farm.items}}</mat-card-title>
+                    <mat-card-subtitle>{{farm.item_code}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image style="max-height: 200px;" [src]="'../../assets/product/rice.png'">
+                <mat-card-content>
+                    <p>
+                        Price: {{farm.product_cost}}
+                    </p>
+                    <p>
+                        Current stocks: {{farm.no_of_stocks}}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="addToCart(farm)">Add to Cart</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
