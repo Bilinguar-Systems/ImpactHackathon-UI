@@ -13,12 +13,18 @@
       <button [routerLink]="'/cart'" mat-icon-button class="example-icon favorite-icon">
         <mat-icon>shopping_basket</mat-icon>
       </button>
-      <button mat-icon-button class="example-icon favorite-icon">
+      <button mat-icon-button [matMenuTriggerFor]="appMenu" class="example-icon favorite-icon">
         <mat-icon>menu</mat-icon>
       </button>
     </span>
+    
 </mat-toolbar>
+<mat-menu #appMenu="matMenu">
+  <button *ngIf="authService.currentUserValue" (click)="logout()" mat-menu-item>Logout</button>
+</mat-menu>
 
 <div style="height: 88vh;" [@fadeAnimation]="getRouterOutletState(o)">
   <router-outlet #o="outlet"></router-outlet>
 </div>
+
+

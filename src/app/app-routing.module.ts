@@ -8,6 +8,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { FarmProductsComponent } from './farm-products/farm-products.component';
 import { CartComponent } from './cart/cart.component';
+import { FaqComponent } from './faq/faq.component';
 
 const routes: Routes = [{
   path: 'home',
@@ -27,6 +28,11 @@ const routes: Routes = [{
 {
   path: 'products',
   component: FarmProductsComponent,
+  canActivate: [AuthGuard],
+},
+{
+  path: 'faq',
+  component: FaqComponent,
   canActivate: [AuthGuard],
 },
 {

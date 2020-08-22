@@ -1,10 +1,13 @@
-<mat-list>
-    <h3 mat-subheader>Cart</h3>
-    <mat-list-item *ngFor="let item of items">
-      <mat-icon mat-list-icon>folder</mat-icon>
-      <h4 mat-line>{{item.name}}</h4>
-      <p mat-line> {{item.price}} x{{item.quantity}} </p>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <h3 mat-header>Total: {{total}}</h3>
-  </mat-list>
+<div style="margin-left: 300px; margin-right: 300px;">
+
+    <mat-list>
+        <h3 mat-subheader>Cart</h3>
+        <mat-list-item *ngFor="let item of items">
+            <mat-icon mat-list-icon>shopping_bag</mat-icon>
+            <h4 mat-line>{{item.name}}</h4>
+            <p mat-line> {{item.price}} x{{item.qua}} </p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 mat-header>Total: {{total}}</h3>
+    </mat-list>
+</div>
