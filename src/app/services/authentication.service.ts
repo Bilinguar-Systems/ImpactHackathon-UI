@@ -51,8 +51,8 @@ export class AuthenticationService {
 
     return this.http.post(`${environment.api}/oauth/token`, s)
       .pipe(map(user => {
-        localStorage.setItem('loggedUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
+        localStorage.setItem('loggedUser', JSON.stringify(user['access_token']));
+        this.currentUserSubject.next(user['access_token']);
         return user;
       }));
   }

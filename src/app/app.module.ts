@@ -13,7 +13,7 @@ import { JoinNowComponent } from './join-now/join-now.component';
 import { FarmComponent } from './farm/farm.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {PortalModule} from '@angular/cdk/portal';
@@ -122,7 +122,7 @@ import { CartComponent } from './cart/cart.component';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
- 
+    FormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
