@@ -5,20 +5,20 @@
     <span>
       <a mat-button [routerLink]="'/home'"> Home </a>
       <a mat-button [routerLink]="'/farm'"> Farm</a>
+      <a mat-button [routerLink]="'/products'"> Products</a>
       <a mat-button [routerLink]="'/faq'"> FAQ </a>
       <a mat-button [routerLink]="'/about'"> About us </a>
-
     </span>
     <span>
-
+      <button [routerLink]="'/cart'" mat-icon-button class="example-icon favorite-icon">
+        <mat-icon>shopping_basket</mat-icon>
+      </button>
       <button mat-icon-button class="example-icon favorite-icon">
         <mat-icon>menu</mat-icon>
       </button>
     </span>
-
 </mat-toolbar>
 
 <div style="height: 88vh;" [@fadeAnimation]="getRouterOutletState(o)">
-
   <router-outlet #o="outlet"></router-outlet>
 </div>
