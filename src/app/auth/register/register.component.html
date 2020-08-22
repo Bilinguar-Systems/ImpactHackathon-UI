@@ -1,6 +1,7 @@
 <mat-card>
     <mat-card-content>
         <h2>Register</h2>
+
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <mat-form-field class="full-width-input">
                 <input matInput placeholder="First Name" formControlName="first_name"
@@ -43,6 +44,9 @@
                     Please provide a valid Password
                 </mat-error>
             </mat-form-field>
+            <label>Verify by uploading identification card</label>
+            <input type="file" (change)="onVerifyChanged($event)" formControlName="image"/>
+            <br>
             <button mat-raised-button color="primary">
                 Register
             </button>

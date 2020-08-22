@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  selectedFile: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +30,7 @@ export class RegisterComponent implements OnInit {
       middle_name: ['', Validators.required],
       date_of_birth: ['', Validators.required],
       email: ['', Validators.email],
+      image: ['', Validators.required],
 
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
@@ -48,6 +50,7 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this.onVerify(data);
           alert('Registration successful');
           this.router.navigate(['/login']);
         },
@@ -55,5 +58,11 @@ export class RegisterComponent implements OnInit {
           alert(error);
           this.loading = false;
         });
+  }
+  onVerifyChanged(event){
+    this.selectedFile = event.target.files[0]
+  }
+  onVerify(userRegistered){
+    this.authenticationService.verify(this.selectedFile,userRegistered['id'])
   }
 }

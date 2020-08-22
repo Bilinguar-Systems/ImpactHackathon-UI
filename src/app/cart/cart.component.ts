@@ -20,8 +20,6 @@ export class CartComponent implements OnInit {
   }
 
   async checkout() {
-   
-
     this.items.forEach( obj => this._renameKey( obj, 'id', 'product_id' ) );
     this.items.forEach( obj => this._renameKey( obj, 'price', 'product_cost' ) );
 

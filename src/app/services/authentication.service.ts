@@ -62,6 +62,17 @@ export class AuthenticationService {
     return this.http.post(`${environment.api}/api/register`, user);
   }
 
+  verify(image, id){
+    const formData = new FormData();
+    formData.append('image-file', image);
+    const httpHeaders: HttpHeaders = new HttpHeaders({
+      'Content-Type':  'multipart/form-data',
+      'Authorization': 'Bearer ' + this.currentUserValue
+    });
+
+    return this.http.post(`${environment.api}/api/user/${id}/id`, image, {headers: httpHeaders})
+  }
+
   logout() {
     // remove user from local storage and set current user to null
     localStorage.removeItem('loggedUser');
