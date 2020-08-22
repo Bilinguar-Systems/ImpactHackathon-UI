@@ -1,10 +1,10 @@
 export class User {
-    id: number;
-    username: string;
+    date_of_birth: number;
+    middle_name: string;
     password: string;
-    firstName: string;
+    first_name: string;
     email: string;
-    lastName: string;
+    last_name: string;
     addressLine1: string;
     addressLine2: string;
     barangay: string;

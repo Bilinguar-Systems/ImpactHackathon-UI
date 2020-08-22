@@ -1,0 +1,18 @@
+.farm-card {
+    max-width: 200px;
+    min-width: 199px;
+    max-height: 350px;
+}
+
+.example-header-image {
+    background-image: url('../../assets/icon.png');
+    background-size: cover;
+}
+
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    margin-bottom: 16px;
+}

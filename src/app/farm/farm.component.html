@@ -1,1 +1,23 @@
-<p>farm works!</p>
+<div style="margin-left: 300px; margin-right: 300px;">
+    <h3>Farms</h3>
+    <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div [fxFlex]="(100/4) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor='let farm of data.data'>
+            <mat-card class=" farm-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{farm.project}}</mat-card-title>
+                    <mat-card-subtitle>{{farm.location}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="getRandomImage()">
+                <mat-card-content>
+                    <p>
+                        Hectars: {{farm.hectars}}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>Details</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
