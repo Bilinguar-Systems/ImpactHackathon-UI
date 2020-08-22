@@ -2,40 +2,19 @@ import { Component } from '@angular/core';
 import {trigger, animate, style, group, animateChild, query, stagger, transition} from '@angular/animations';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material';
-
-// Animations
-  const fade = [
-    query(':self', 
-      [
-        style({ opacity: 0 })
-      ], 
-      { optional: true }
-    ),
-
-    query(':self',
-      [
-        style({ opacity: 0 }),
-        animate('.3s', style({ opacity: 1 }))
-      ], 
-      { optional: true }
-    )
-  ];
+import { fadeAnimation } from './shared/animations/fade.animation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: [
-    trigger('routerAnimations', [
-      transition('* => *', fade)
-    ])
-  ]
+  animations: [fadeAnimation]
+
 })
 export class AppComponent {
   title = 'projectTabangNa';
 
-  prepareRouteTransition(outlet) {
-    const animation = outlet.activatedRouteData['animation'] || {};
-    return animation['value'] || null;
+  public getRouterOutletState(outlet) {
+    return outlet.isActivated ? outlet.activatedRoute : '';
   }
 }

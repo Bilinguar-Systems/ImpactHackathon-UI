@@ -49,7 +49,7 @@ export class AuthenticationService {
       'Content-Type':  'multipart/form-data'
     });
 
-    return this.http.post(`${environment.api}/oauth/token`, s, {headers: httpHeaders})
+    return this.http.post(`${environment.api}/oauth/token`, s)
       .pipe(map(user => {
         localStorage.setItem('loggedUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
