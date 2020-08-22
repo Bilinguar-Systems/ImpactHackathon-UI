@@ -1,13 +1,32 @@
 <div style="margin-left: 300px; margin-right: 300px;">
+    <div class="flex-container" fxLayout="row">
+        <div class="child-1" fxFlex="1 2 auto">
+            <h3>Cart</h3>
+            <mat-list>
+                <mat-list-item *ngFor="let item of items">
+                    <mat-icon mat-list-icon>shopping_bag</mat-icon>
+                    <h4 mat-line>{{item.name}}</h4>
+                    <p mat-line> {{item.price}} x{{item.qua}} </p>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <h3 style="float:right" mat-header>Total: {{total}}</h3>
+            </mat-list>
+        </div>
+        <div class="child-2" fxFlex="1 1 auto">
+            <div style="margin-left: 30px;">
+                <h3>Checkout</h3>
+                <label id="radio-group-label">Select payment method: </label>
 
-    <mat-list>
-        <h3 mat-subheader>Cart</h3>
-        <mat-list-item *ngFor="let item of items">
-            <mat-icon mat-list-icon>shopping_bag</mat-icon>
-            <h4 mat-line>{{item.name}}</h4>
-            <p mat-line> {{item.price}} x{{item.qua}} </p>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <h3 mat-header>Total: {{total}}</h3>
-    </mat-list>
+                <mat-radio-group [(ngModel)]="payment_method"  aria-labelledby="radio-group-label" class="radio-group">
+                    <mat-radio-button class="radio-button" value="bank_transfer" checked="true">
+                        Bank Transfer
+                    </mat-radio-button>
+                    <mat-radio-button class="radio-button" value="bank_transfer">
+                        Cash on Delivery
+                    </mat-radio-button>
+                </mat-radio-group>
+                <button mat-button style="float: right" (click)="checkout()">Buy</button>
+            </div>
+        </div>
+    </div>
 </div>
